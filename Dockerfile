@@ -1,4 +1,4 @@
-FROM jupyter/datascience-notebook:87210526f381
+FROM jupyter/scipy-notebook:e531f5310d4f
 
 # Add RUN statements to install packages as the $NB_USER defined in the base images.
 

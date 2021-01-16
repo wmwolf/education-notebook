@@ -1,1 +1,1 @@
-FROM umsimads/education-notebook:1017284261a0
+FROM wmwolf/education-notebook:latest
