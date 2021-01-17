@@ -1,4 +1,4 @@
-FROM jupyter/scipy-notebook:e531f5310d4f
+FROM jupyter/scipy-notebook:d979fa1b8c4a
 
 # Add RUN statements to install packages as the $NB_USER defined in the base images.
 
