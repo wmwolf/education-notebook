@@ -19,6 +19,9 @@ FROM jupyter/scipy-notebook:d979fa1b8c4a
 # pieces for nbgrader funtionality are already installed by the bootstraped image.
 RUN conda install fuzzywuzzy --yes
 
+# Get nose for running more interesting tests in nbgrader notebooks
+RUN conda install nose --yes
+
 # Then install nbgrader with --no-deps because all the neeeded deps are already present.
 # Additionally, latest nbgrader release is pinging an old ipython version breaking stuff.
 # Note: Eventually, when things get fixed upstream we can remove the previous installation
