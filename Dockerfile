@@ -22,13 +22,31 @@ RUN conda install fuzzywuzzy --yes
 # Get nose for running more interesting tests in nbgrader notebooks
 RUN conda install nose --yes
 
-# Then install nbgrader with --no-deps because all the neeeded deps are already present.
-# Additionally, latest nbgrader release is pinging an old ipython version breaking stuff.
-# Note: Eventually, when things get fixed upstream we can remove the previous installation
-# of "fuzzywuzzy" and remove the --no-deps flag.
-RUN conda install nbgrader --no-deps --yes
-
 # Add RISE 5.4.1 to the mix as well so user can show live slideshows from their notebooks
 # More info at https://rise.readthedocs.io
 # Note: Installing RISE with --no-deps because all the neeeded deps are already present.
 RUN conda install rise --no-deps --yes
+
+# Then install nbgrader with --no-deps because all the neeeded deps are already present.
+# Additionally, latest nbgrader release is pinging an old ipython version breaking stuff.
+# Note: Eventually, when things get fixed upstream we can remove the previous installation
+# of "fuzzywuzzy" and remove the --no-deps flag.
+# RUN conda install nbgrader --no-deps --yes
+
+
+# ng share: inspired by https://github.com/LibreTexts/ngshare/blob/master/testing/install_z2jh/Dockerfile-singleuser
+
+# Since we're using ngshare, we need the (as of 2021-01-18) unreleased v0.7.0
+# of nbgrader.
+RUN python3 -m pip install git+https://github.com/jupyter/nbgrader.git@5a81fd5 && \
+    jupyter nbextension install --sylink --sys-prefix --py nbgrader && \
+    jupyter nbextension enable --sys-prefix --py nbgrader && \
+    jupyter serverextension enable --sys-prefix --py nbgrader
+
+# install ngshare_exchange, so nbgrader has a way to communicate between
+# different k8s pods (teacher to student, student to teacher)
+RUN python3 -m pip install ngshare_exchange
+
+# Configure nbgrader
+COPY nbgrader_config.py /etc/jupyter/nbgrader_config.py
+
