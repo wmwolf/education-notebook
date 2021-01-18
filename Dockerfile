@@ -48,5 +48,5 @@ RUN python3 -m pip install git+https://github.com/jupyter/nbgrader.git@5a81fd5 &
 RUN python3 -m pip install ngshare_exchange
 
 # Configure nbgrader
-COPY nbgrader_config.py /etc/jupyter/nbgrader_config.py
+# COPY nbgrader_config.py /etc/jupyter/nbgrader_config.py
 
