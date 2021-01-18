@@ -11,9 +11,6 @@ FROM jupyter/scipy-notebook:d979fa1b8c4a
 # The conda-forge channel is already present in the system .condarc file, so there is no need to
 # add a channel invocation in any of the next commands.
 
-# Add nbgrader 0.5.5 to the image
-# More info at https://nbgrader.readthedocs.io/en/stable/
-
 # First install some missing dependencies
 # Note: there is no need to install the "jupyter" metapackage because all the needed
 # pieces for nbgrader funtionality are already installed by the bootstraped image.
@@ -48,5 +45,5 @@ RUN python3 -m pip install git+https://github.com/jupyter/nbgrader.git@5a81fd5 &
 RUN python3 -m pip install ngshare_exchange
 
 # Configure nbgrader
-# COPY nbgrader_config.py /etc/jupyter/nbgrader_config.py
+COPY nbgrader_config.py /etc/jupyter/nbgrader_config.py
 
