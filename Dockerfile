@@ -30,6 +30,8 @@ RUN conda install rise --no-deps --yes
 # of "fuzzywuzzy" and remove the --no-deps flag.
 # RUN conda install nbgrader --no-deps --yes
 
+# downgrade nbconvert to work with newer versions of nbgrader (see nbgrader #1391)
+RUN python3 -m pip install 'nbconvert==5.6.1' 
 
 # ng share: inspired by https://github.com/LibreTexts/ngshare/blob/master/testing/install_z2jh/Dockerfile-singleuser
 
