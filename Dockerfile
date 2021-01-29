@@ -24,6 +24,9 @@ RUN conda install nose --yes
 # Note: Installing RISE with --no-deps because all the neeeded deps are already present.
 RUN conda install rise --no-deps --yes
 
+# Add nbgitpuller so we can synchronize a folder of handouts
+RUN conda install nbgitpuller --yes
+
 # Then install nbgrader with --no-deps because all the neeeded deps are already present.
 # Additionally, latest nbgrader release is pinging an old ipython version breaking stuff.
 # Note: Eventually, when things get fixed upstream we can remove the previous installation
