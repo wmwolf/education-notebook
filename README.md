@@ -5,10 +5,11 @@ maintained by the community.
 
 ### This particular docker stack image is a fork of the official one, `umsimads/education-notebook`.
 
-The impetus of this fork was two-fold:
+The impetus of this fork was three-fold:
 
 - Switch to using `scipy-notebook` instead of `datascience-notebook` since I have no need for R, Julia, etc.
 - Use a more updated base image than what was originally available so that a more updated version of `nbgrader` was available.
+- Add `nbgitpuller` to synchronize handouts (not to be turned in)
 
 ## What is education-notebook
 
@@ -22,8 +23,9 @@ notebooks and allows the instructor to interact with the notebook while teaching
 [nbgrader](https://nbgrader.readthedocs.io) offers grading capabilities as well
 as notebook assignment distribution and collection.
 
-The `education-notebook` contains Python, R, and Julia as well as frequently
-used data science libraries.
+[nbgitpuller](https://github.com/jupyterhub/nbgitpuller) provides a way to provide synchronization of a git repositiory without the user ever having to interact with git.
+
+
 
 <!-- ## Try it on Binder
 
